@@ -1,16 +1,56 @@
 import axios from "axios";
+import { useState, useEffect } from "react";
+import RecipePreferenceButtons from "./RecipePreferenceButtons";
+import "../RecipeTitle.css";
 
-const getRecipeURL = () => {
-    axios.get("https://api.spoonacular.com/recipes/random?apiKey=4d12802731824d398f7067d2c0394352")
-    .then((response) => console.log(response.data))
-}
+const APIKEY = "dc0391d16c1a4bedb006d1187b319ec3";
+//const APIURL = `https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}`;
+//API info @:  https://spoonacular.com/food-api/console#Profile
 
 const RecipeTitle = () => {
+  const [title, setTitle] = useState("");
+  const [url, setURL] = useState("");
+
+  const getRecipeData = async () => {
+    const returnedData = await axios
+      .get(APIURL)
+      .catch((error) => console.log("There was an", error));
+
+    console.log("returnedData was: ", returnedData);
+    console.log("title was: ", returnedData.data.recipes[0].title);
+    console.log("sourceURL was: ", returnedData.data.recipes[0].sourceUrl);
+
+    setTitle(returnedData.data.recipes[0].title.toUpperCase());
+    setURL(returnedData.data.recipes[0].sourceUrl);
+  };
+
+  useEffect(() => {
+    getRecipeData();
+  }, []);
+
+  function handleCallBack(callBackData) {
+    // //if callBackData = "veggy", then set the URL tag to "vegetarian"
+    // if (callBackData === "veggy") {
+    //     APIURL = `https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}tags=vegetarian`;
+    // }
+    // //if callBackData = "Didn't bite", then call the API again (getRecipe Data)
+    // if (callBackData === "Didn't bite") {
+    //     setURL(`https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}`)
+    // }
+    callBackData = null;
+    return callBackData;
+  }
+
   return (
-  <>
-    <div>{getRecipeURL}</div>
-  </>
-  )
+    <>
+      <a className="recipe-title" href={url}>
+        {title}
+      </a>
+      <br />
+      <br />
+      <RecipePreferenceButtons parentCallBack={handleCallBack} />
+    </>
+  );
 };
 
-export default RecipeTitle
+export default RecipeTitle;

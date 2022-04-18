@@ -1,22 +1,27 @@
 import "./App.css";
-import "./components/RecipeTitle"
+import RecipeTitle from "./components/RecipeTitle";
 
 let welcomeText = "";
 
 const randomHello = () => {
   let randomNum = Math.floor(Math.random() * (5 - 1 + 1) + 1);
 
-  switch(randomNum) {
-    case 1: welcomeText = "Why don't you eat some F*ing" 
-    break;
-    case 2: welcomeText = "Try not to F* up some"
-    break;
-    case 3: welcomeText = "You burnt it last time... try not to burn some"
-    break;
-    case 4: welcomeText = "Aren't you getting F*ing tired of this... try some"
-    break;
-    case 5: welcomeText = "Why don't you give this a F*ing try"
-    break;
+  switch (randomNum) {
+    case 1:
+      welcomeText = "WHY DON'T YOU EAT SOME F*ING";
+      break;
+    case 2:
+      welcomeText = "TRY NOT TO F* UP SOME";
+      break;
+    case 3:
+      welcomeText = "YOU F*ING BURNT IT LAST TIME... TRY NOT TO BURN SOME";
+      break;
+    case 4:
+      welcomeText = "AREN'T YOU GETTING F*ING TIRED OF THIS... TRY SOME";
+      break;
+    case 5:
+      welcomeText = "WHY DONT YOU GIVE THIS A F*ING TRY:";
+      break;
   }
 };
 
