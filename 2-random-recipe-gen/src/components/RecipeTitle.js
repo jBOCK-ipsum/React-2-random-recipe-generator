@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import RecipePreferenceButtons from "./RecipePreferenceButtons";
 import "../RecipeTitle.css";
 
-const APIKEY = "dc0391d16c1a4bedb006d1187b319ec3";
+const APIKEY = "***********Private API Key*************";
 //const APIURL = `https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}`;
 //API info @:  https://spoonacular.com/food-api/console#Profile
 
